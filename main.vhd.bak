@@ -1,0 +1,258 @@
+-------------------------------------------------------------------------------
+--
+-- Title       : disps
+-- Design      : displays
+-- Author      : Microsoft
+-- Company     : Microsoft
+--
+-------------------------------------------------------------------------------
+--
+-- File        : displays2.vhd
+-- Generated   : Sun Apr 11 10:14:46 2010
+-- From        : interface description file
+-- By          : Itf2Vhdl ver. 1.20
+--
+-------------------------------------------------------------------------------
+--
+-- Description : 
+--
+-------------------------------------------------------------------------------
+
+--{{ Section below this comment is automatically maintained
+--   and may be overwritten
+--{entity {disps} architecture {arch_disps}}
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;	
+use IEEE.STD_LOGIC_ARITH.all;			 
+use ieee.std_logic_unsigned.ALL;
+
+entity main is
+	 port(
+
+	    clk     : in std_logic;
+		 Di 		: out STD_LOGIC_VECTOR(6 downto 0);
+		 sel 		: out STD_LOGIC_VECTOR(3 downto 0)
+	     );
+end main;
+
+
+--}} End of automatically maintained section
+
+architecture arch_disps of main is			
+component disp
+	 port(
+		 a : in std_logic_vector(3 downto 0);
+		 b : out std_logic_vector(6 downto 0)
+	     );
+end component;
+
+signal c,d,u,m,numero : integer range 0 to 15;
+
+signal cont_tempo : integer range 0 to 9999;
+
+
+begin		
+
+
+
+process(clk)
+
+variable cont : integer range 0 to 100e6;
+
+begin
+
+  if rising_edge(clk) then
+
+     if cont<100e6 then cont := cont + 1;
+
+	                else cont := 0;
+
+						      if cont_tempo <9999 
+
+								  then
+
+								    cont_tempo <= cont_tempo + 1;
+
+								  else cont_tempo <=0;
+
+								end if;  
+
+								  
+
+		end if;
+
+  end if;
+
+end process;
+
+
+
+
+
+
+
+
+
+mux : process(clk)
+
+variable k : integer range 0 to 400000;
+
+begin
+
+		if rising_edge(clk) then
+
+			if k<400000 then k:=k+1;
+
+			            else k:=0;
+
+			end if;
+
+			
+
+			if k<100000 then sel <=	"1110";
+
+								  numero <= u;
+
+			elsif k<200000 then sel <=	"1101";
+
+									  numero <= d;
+
+			elsif k<300000 then sel <=	"1011";
+
+									  numero <= c;
+
+			else sel <=	"0111";
+
+				  numero <= m;
+
+			end if;	  
+
+		end if; -- rising_edge
+
+end process;
+
+
+
+
+
+process(cont_tempo)
+
+variable temp : integer range 0 to 9999;
+
+begin
+
+    if cont_tempo >=9000 then m <= 9;
+
+	                          temp := cont_tempo - 9000;
+
+    elsif cont_tempo>=8000 then m <= 8;
+
+	                            temp := cont_tempo - 8000;
+
+    elsif cont_tempo>=7000 then m <= 7;
+
+	                            temp := cont_tempo - 7000;
+
+    elsif cont_tempo>=6000 then m <= 6;
+
+	                            temp := cont_tempo - 6000;
+
+    elsif cont_tempo>=5000 then m <= 5;
+
+	                            temp := cont_tempo - 5000;
+
+    elsif cont_tempo>=4000 then m <= 4;
+
+	                            temp := cont_tempo - 4000;
+
+    elsif cont_tempo>=3000 then m <= 3;
+
+	                            temp := cont_tempo - 3000;
+
+    elsif cont_tempo>=2000 then m <= 2;
+
+	                            temp := cont_tempo - 2000;
+
+    elsif cont_tempo>=1000 then m <= 1;
+
+	                            temp := cont_tempo - 1000;
+
+									else m<=0;
+
+                                temp := cont_tempo;									
+
+	  end if;
+
+	  
+
+	  if temp>=900 then c <=9;
+
+	                    temp := temp - 900;
+
+	  elsif temp>=800 then c <=8;
+
+	                       temp := temp - 800;
+
+	  elsif temp>=700 then c <=7;
+
+	                       temp := temp - 700;
+
+	  elsif temp>=600 then c <=6;
+
+	                       temp := temp - 600;
+
+	  elsif temp>=500 then c <=5;
+
+	                       temp := temp - 500;
+
+	  elsif temp>=400 then c <=4;
+
+	                       temp := temp - 400;
+
+	  elsif temp>=300 then c <=3;
+
+	                       temp := temp - 300;
+
+	  elsif temp>=200 then c <=2;
+
+	                       temp := temp - 200;
+
+	  elsif temp>=100 then c <=1;
+
+	                       temp := temp - 100;
+
+	  else c <=0;
+
+	  end if;
+
+									  
+
+	if temp >= 90 then d <= 9;
+								u <= temp -90;
+    elsif (temp) >= 80 then d <= 8;
+									 u <= temp -80;
+    elsif (temp) >= 70 then d <= 7;
+									 u <= temp -70;
+    elsif (temp) >= 60 then d <= 6;
+									 u <= temp -60;
+    elsif (temp) >= 50 then d <= 5;
+									    u <= temp -50;
+    elsif (temp) >= 40 then d <= 4;
+									    u <= temp -40;
+    elsif (temp) >= 30 then d <= 3;
+									    u <= temp -30;
+    elsif (temp) >= 20 then d <= 2;
+									    u <= temp -20;
+    elsif (temp) >= 10 then d <= 1;
+									    u <= temp -10;
+
+	 else d <= 0;
+		   u <= temp ;
+    end if;
+end process;
+
+a0 : disp port map (conv_std_logic_vector(numero,4), di);
+
+
+end arch_disps;

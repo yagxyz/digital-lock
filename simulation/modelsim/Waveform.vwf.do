@@ -1,0 +1,57 @@
+vlog -work work C:/Users/yunio/OneDrive/Área de Trabalho/Projeto_VHDL_Yunior_GrupoX/Codec_pj1_SLP/simulation/modelsim/Waveform.vwf.vt
+vsim -novopt -c -t 1ps -L cycloneii_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate work.main_vlg_vec_tst
+onerror {resume}
+add wave {main_vlg_vec_tst/i1/KEY}
+add wave {main_vlg_vec_tst/i1/KEY[3]}
+add wave {main_vlg_vec_tst/i1/KEY[2]}
+add wave {main_vlg_vec_tst/i1/KEY[1]}
+add wave {main_vlg_vec_tst/i1/KEY[0]}
+add wave {main_vlg_vec_tst/i1/LEDG}
+add wave {main_vlg_vec_tst/i1/LEDG[8]}
+add wave {main_vlg_vec_tst/i1/LEDG[7]}
+add wave {main_vlg_vec_tst/i1/LEDG[6]}
+add wave {main_vlg_vec_tst/i1/LEDG[5]}
+add wave {main_vlg_vec_tst/i1/LEDG[4]}
+add wave {main_vlg_vec_tst/i1/LEDG[3]}
+add wave {main_vlg_vec_tst/i1/LEDG[2]}
+add wave {main_vlg_vec_tst/i1/LEDG[1]}
+add wave {main_vlg_vec_tst/i1/LEDG[0]}
+add wave {main_vlg_vec_tst/i1/LEDR}
+add wave {main_vlg_vec_tst/i1/LEDR[17]}
+add wave {main_vlg_vec_tst/i1/LEDR[16]}
+add wave {main_vlg_vec_tst/i1/LEDR[15]}
+add wave {main_vlg_vec_tst/i1/LEDR[14]}
+add wave {main_vlg_vec_tst/i1/LEDR[13]}
+add wave {main_vlg_vec_tst/i1/LEDR[12]}
+add wave {main_vlg_vec_tst/i1/LEDR[11]}
+add wave {main_vlg_vec_tst/i1/LEDR[10]}
+add wave {main_vlg_vec_tst/i1/LEDR[9]}
+add wave {main_vlg_vec_tst/i1/LEDR[8]}
+add wave {main_vlg_vec_tst/i1/LEDR[7]}
+add wave {main_vlg_vec_tst/i1/LEDR[6]}
+add wave {main_vlg_vec_tst/i1/LEDR[5]}
+add wave {main_vlg_vec_tst/i1/LEDR[4]}
+add wave {main_vlg_vec_tst/i1/LEDR[3]}
+add wave {main_vlg_vec_tst/i1/LEDR[2]}
+add wave {main_vlg_vec_tst/i1/LEDR[1]}
+add wave {main_vlg_vec_tst/i1/LEDR[0]}
+add wave {main_vlg_vec_tst/i1/SW}
+add wave {main_vlg_vec_tst/i1/SW[17]}
+add wave {main_vlg_vec_tst/i1/SW[16]}
+add wave {main_vlg_vec_tst/i1/SW[15]}
+add wave {main_vlg_vec_tst/i1/SW[14]}
+add wave {main_vlg_vec_tst/i1/SW[13]}
+add wave {main_vlg_vec_tst/i1/SW[12]}
+add wave {main_vlg_vec_tst/i1/SW[11]}
+add wave {main_vlg_vec_tst/i1/SW[10]}
+add wave {main_vlg_vec_tst/i1/SW[9]}
+add wave {main_vlg_vec_tst/i1/SW[8]}
+add wave {main_vlg_vec_tst/i1/SW[7]}
+add wave {main_vlg_vec_tst/i1/SW[6]}
+add wave {main_vlg_vec_tst/i1/SW[5]}
+add wave {main_vlg_vec_tst/i1/SW[4]}
+add wave {main_vlg_vec_tst/i1/SW[3]}
+add wave {main_vlg_vec_tst/i1/SW[2]}
+add wave {main_vlg_vec_tst/i1/SW[1]}
+add wave {main_vlg_vec_tst/i1/SW[0]}
+run -all
